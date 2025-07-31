@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mayuri's Friendship Page 💛</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-image: url('../background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Segoe UI', sans-serif;
+    }
+  </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+<script>
+  window.onload = function () {
+    // Fire confetti from the left
+    confetti({
+      particleCount: 80,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0, y: 0.6 }
+    });
+
+    // Fire confetti from the right
+    confetti({
+      particleCount: 80,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1, y: 0.6 }
+    });
+
+    // Optional: repeat side bursts for 2 seconds
+    let duration = 2 * 1000;
+    let end = Date.now() + duration;
+
+    (function frame() {
+      confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.6 }
+      });
+
+      confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.6 }
+      });
+
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  };
+</script>
+
+<body class="min-h-screen flex flex-col items-center justify-center text-center p-4 bg-white bg-opacity-80 text-black">
+
+  <!-- 🌼 Greeting -->
+  <h1 class="text-4xl font-extrabold drop-shadow-md mb-4">
+    Hey Mayuri! 🌟
+  </h1>
+
+  <!-- 💌 Message -->
+  <p class="text-lg mb-6 max-w-xl leading-relaxed">
+    I was just looking for a room, but boom—you walked in and stole the spotlight (and my heart 😜).
+You always win (ugh, typical 😏), but with you, it never feels like losing.
+You're a total star—lovely and loud 🌟💕
+  </p>
+
+  <!-- 📸 Image Gallery -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+    <div class="aspect-[4/5] overflow-hidden rounded-xl shadow-lg">
+      <img src="../photos/M1.jpeg" alt="Mayuri 1" class="w-full h-full object-cover" />
+    </div>
+    <div class="aspect-[4/5] overflow-hidden rounded-xl shadow-lg">
+      <img src="../photos/M2.jpeg" alt="Mayuri 2" class="w-full h-full object-cover" />
+    
+  </div>
+
+  <!-- 🔙 Back Button -->
+  <a href="../index.html" class="mt-4 inline-block bg-yellow-500 text-white font-bold py-2 px-6 rounded-lg shadow hover:bg-yellow-600 transition">
+    ← Back to Main Page
+  </a>
+
+</body>
+</html>

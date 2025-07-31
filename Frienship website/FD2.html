@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('FDBG2.jpeg'); /* 🔁 Replace with your image filename */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Segoe UI', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center text-center p-4 backdrop-blur-sm bg-black/30">
+
+  
+
+  <!-- 🥳 Heading -->
+  <h1 class="text-5xl font-extrabold text-white drop-shadow-md tracking-wide mb-4 mt-24">
+    HAPPY FRIENDSHIP DAY! 💛
+  </h1>
+
+  <p class="text-lg text-white mb-6">Enter your name to see your surprise 😊</p>
+
+  <!-- ✍️ Name Input Form -->
+  <form onsubmit="redirectToPage(event)" class="w-full max-w-sm">
+    <input
+      type="text"
+      id="nameInput"
+      placeholder="Enter your name"
+      required
+      class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-center mb-4"
+    />
+
+    <button
+      type="submit"
+      class="bg-white text-yellow-600 font-bold py-2 px-6 rounded-lg shadow hover:bg-yellow-50 transition"
+    >
+      Show Me My Page
+    </button>
+  </form>
+
+  <!-- 🚫 Error Message -->
+  <p id="errorMsg" class="text-red-700 font-semibold mt-4 hidden">
+    Name not recognized! Try again.
+  </p>
+
+  <!-- 🔁 Redirect Logic -->
+  <script>
+    const nameMap = {
+      anuja: "anuja.html",
+      mayuri: "mayuri.html",
+      sandhya: "sandhya.html",
+      lichi: "lichi.html",
+      khatija: "khatija.html",
+      azra: "azra.html"
+    };
+
+    function redirectToPage(e) {
+      e.preventDefault();
+      const input = document.getElementById("nameInput").value.trim().toLowerCase();
+      const error = document.getElementById("errorMsg");
+
+      if (nameMap[input]) {
+        window.location.href = "pages/" + nameMap[input];
+      } else {
+        error.classList.remove("hidden");
+      }
+    }
+  </script>
+
+</body>
+</html>

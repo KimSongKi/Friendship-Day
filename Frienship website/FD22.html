@@ -1,0 +1,91 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Friendship Day 💛</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('FDBG2.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: 'Segoe UI', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center text-center p-4 backdrop-blur-sm bg-black/30">
+
+  <!-- 🥳 Heading -->
+  <h1 class="text-5xl font-extrabold text-white drop-shadow-md tracking-wide mb-4 mt-24">
+    HAPPY FRIENDSHIP DAY! 💛
+  </h1>
+
+  <p class="text-lg text-white mb-6">Enter your secret code to unlock your surprise 😊</p>
+
+  <!-- 🔐 Code Input -->
+  <form onsubmit="redirectToPage(event)" class="w-full max-w-sm">
+    <input
+      type="text"
+      id="codeInput"
+      placeholder="Enter your secret code"
+      required
+      class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-center mb-4"
+    />
+
+    <button
+      type="submit"
+      class="bg-white text-yellow-600 font-bold py-2 px-6 rounded-lg shadow hover:bg-yellow-50 transition"
+    >
+      Unlock My Page
+    </button>
+  </form>
+
+  <!-- 🔄 Loader & Unlocking Text -->
+  <div id="loader" class="hidden mt-6 animate-spin rounded-full h-10 w-10 border-t-4 border-yellow-400 border-opacity-60 mx-auto"></div>
+  <p id="unlockText" class="text-yellow-200 font-semibold mt-3 hidden">Unlocking your surprise...</p>
+
+  <!-- ❌ Error Message -->
+  <p id="errorMsg" class="text-red-700 font-semibold mt-4 hidden">
+    Invalid code! Try again.
+  </p>
+
+  <script>
+    const codeMap = {
+      "cartoon0206": "anuja.html",
+      "madam0227": "mayuri.html",
+      "awwra0211": "sandhya.html",
+    
+    };
+
+    function redirectToPage(e) {
+      e.preventDefault();
+      const input = document.getElementById("codeInput").value.trim().toLowerCase();
+      const error = document.getElementById("errorMsg");
+      const loader = document.getElementById("loader");
+      const unlockText = document.getElementById("unlockText");
+
+      // Reset visibility
+      error.classList.add("hidden");
+      loader.classList.add("hidden");
+      unlockText.classList.add("hidden");
+
+      if (codeMap[input]) {
+        // Show loader and unlocking text
+        loader.classList.remove("hidden");
+        unlockText.classList.remove("hidden");
+
+        // Delay before redirect
+        setTimeout(() => {
+          window.location.href = "pages/" + codeMap[input];
+        }, 2000);
+      } else {
+        error.classList.remove("hidden");
+      }
+    }
+  </script>
+
+</body>
+</html>
